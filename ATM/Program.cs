@@ -5,11 +5,12 @@ int AZN20 = 0;
 int AZN10 = 0;
 int AZN5 = 0;
 int AZN1 = 0;
+int mebleg = 0;
 
-medaxil();
+//medaxil();
 int eskinasSayi = AZN200 + AZN100 + AZN50 + AZN20 + AZN10 + AZN5 + AZN1;
 int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1;
-eskinaslar();
+mexaricSorgu();
 
 void medaxil()
 {
@@ -41,4 +42,15 @@ void eskinaslar()
     Console.WriteLine($"1 AZN eskinas {AZN1} eded.");
     Console.WriteLine($"ATM-de olan eskinas sayi: {eskinasSayi}");
     Console.WriteLine($"ATM-de olan eskinas deyeri: {eskinasDeyeri}");
+}
+
+void mexaricSorgu()
+{
+    Console.Write("Elde etmek istediyiniz meblegi daxil edin: ");
+    mebleg = int.Parse(Console.ReadLine());
+    while (mebleg > 500)
+    {
+        Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
+        mebleg = int.Parse(Console.ReadLine());
+    }
 }
