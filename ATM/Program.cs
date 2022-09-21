@@ -11,6 +11,7 @@ int mebleg = 0;
 int eskinasSayi = AZN200 + AZN100 + AZN50 + AZN20 + AZN10 + AZN5 + AZN1;
 int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1;
 mexaricSorgu();
+mexaric();
 
 void medaxil()
 {
@@ -53,4 +54,28 @@ void mexaricSorgu()
         Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
         mebleg = int.Parse(Console.ReadLine());
     }
+}
+
+void mexaric()
+{
+    int mexaric200 = mebleg / 200;
+    int qaliq200 = mebleg % 200;
+    
+    int mexaric100 = qaliq200 / 100;
+    int qaliq100 = qaliq200 % 100;
+    
+    int mexaric50 = qaliq100 / 50;
+    int qaliq50 = qaliq100 % 50;
+
+    int mexaric20 = qaliq50 / 20;
+    int qaliq20 = qaliq50 % 20;
+
+    int mexaric10 = qaliq20 / 10;
+    int qaliq10 = qaliq20 % 10;
+
+    int mexaric5 = qaliq10 / 5;
+    
+    int mexaric1 = qaliq10 % 5;
+
+    Console.WriteLine($"Verilen eskinaslar: {mexaric200} eded 200AZN /n {mexaric100} eded 100AZN");
 }
