@@ -27,7 +27,6 @@ void medaxil()
     AZN5 = int.Parse(Console.ReadLine());
     Console.Write("1 AZN eskinaslari daxil edin: ");
     AZN1 = int.Parse(Console.ReadLine());
-    AZN5++;
 }
 
 void eskinaslar()
