@@ -6,9 +6,9 @@ int AZN10 = 0;
 int AZN5 = 0;
 int AZN1 = 0;
 
+int eskinasSayi = AZN200 + AZN100 + AZN50 + AZN20 + AZN10 + AZN5 + AZN1;//eskinasSayi yekunda hesablanmir
+int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1; // eskinasDeyeri yekunda hesablanmir
 medaxil();
-int eskinasSayi = AZN200 + AZN100 + AZN50 + AZN20 + AZN10 + AZN5 + AZN1;
-int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1;
 eskinaslar();
 
 void medaxil()
