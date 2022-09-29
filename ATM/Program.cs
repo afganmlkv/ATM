@@ -77,5 +77,12 @@ void mexaric()
     
     int mexaric1 = qaliq10 % 5;
 
-    Console.WriteLine($"Verilen eskinaslar: {mexaric200} eded 200AZN /n {mexaric100} eded 100AZN");
+    Console.WriteLine($"Verilen eskinaslar:" +
+        $"\n{mexaric200} eded 200AZN " +
+        $"\n{mexaric100} eded 100AZN " +
+        $"\n{mexaric50} eded 50AZN " +
+        $"\n{mexaric20} eded 20 AZN " +
+        $"\n{mexaric10} eded 10 AZN " +
+        $"\n{mexaric5} eded 5 AZN " +
+        $"\n{mexaric1} eded 1 AZN");
 }
