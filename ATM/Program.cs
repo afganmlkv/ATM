@@ -1,13 +1,27 @@
-﻿int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
+﻿Console.WriteLine($"EfqanBank ASC-ye xosh gelmisiniz \nXahish edirik bankomatla emtmek istediyiniz emliyyati sechin");
+sechim();
+
+
+void sechim()
+{
+    Console.WriteLine("Medaxil etmek uchun 'd' --- mexaric etmek uchun 'x' --- ATM-deki eskinaslar barede melumat almaq ucun 'm'");
+}
+
+
+int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
 int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int[] eskinasMedaxil = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
+int eskinasDeyeri = 0;
+int eskinasSayiUmumi = 0;
 
 //eskinasDeyeriHesablama();
-//medaxil();
-int eskinasSayiUmumi = eskinassayi.Sum();
-int eskinasDeyeri = eskinasDeyeriHesablama();
+medaxil();
+medaxil();
+
+
+
 
 
 int eskinasDeyeriHesablama()
@@ -22,7 +36,11 @@ int eskinasDeyeriHesablama()
     return deyer;
 }
 
-
+void update()
+{
+    eskinasDeyeri = eskinasDeyeriHesablama();
+    eskinasSayiUmumi = eskinassayi.Sum();
+}
 
 //mexaricSorgu();
 //mexaric();
@@ -43,8 +61,22 @@ void medaxil()
     eskinassayi[1] += int.Parse(Console.ReadLine());
     Console.Write($"{eskinaslar[0]} AZN eskinaslari daxil edin: ");
     eskinassayi[0] += int.Parse(Console.ReadLine());
+    update();
 }
 
+print();
+
+void print()
+{
+    for(int i=0; i< eskinassayi.Length; i++)
+    {
+        Console.WriteLine(eskinassayi[i]);
+        
+    }
+    Console.WriteLine(eskinasDeyeri);
+    Console.WriteLine(eskinasSayiUmumi);
+
+}
 
 void carieskinaslar()
 {
@@ -102,7 +134,7 @@ void mexaric()
         $"\n{mexaric1} eded 1 AZN");
 }
 
-void print ()
+void mprint ()
 {
     Console.WriteLine("Verilen eskinaslar:");
     if (eskinasMexaric[6] > 0)
