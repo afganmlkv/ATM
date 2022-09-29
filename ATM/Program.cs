@@ -1,12 +1,4 @@
 ﻿Console.WriteLine($"EfqanBank ASC-ye xosh gelmisiniz \nXahish edirik bankomatla emtmek istediyiniz emliyyati sechin");
-sechim();
-
-
-void sechim()
-{
-    Console.WriteLine("Medaxil etmek uchun 'd' --- mexaric etmek uchun 'x' --- ATM-deki eskinaslar barede melumat almaq ucun 'm'");
-}
-
 
 int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
 int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
@@ -16,11 +8,34 @@ int mebleg = 0;
 int eskinasDeyeri = 0;
 int eskinasSayiUmumi = 0;
 
-//eskinasDeyeriHesablama();
-medaxil();
-medaxil();
+
+emeliyyatSechim();
 
 
+void emeliyyatSechim()
+{
+    Console.WriteLine("Medaxil etmek uchun 'd' --- mexaric etmek uchun 'x' --- ATM-deki eskinaslar barede melumat almaq ucun 'm'");
+    char sechim = char.Parse(Console.ReadLine());
+    switch (sechim)
+    {
+        case 'd':
+            medaxil();
+            break;
+        case 'x':
+            mexaricSorgu();
+            mexaric();
+            break;
+        case 'm':
+            carieskinaslar();
+            break;
+            default:
+            Console.WriteLine("Duzgun sechim edin");
+            emeliyyatSechim();
+            break;
+
+
+    }
+}
 
 
 
@@ -64,7 +79,7 @@ void medaxil()
     update();
 }
 
-print();
+
 
 void print()
 {
@@ -141,4 +156,10 @@ void mprint ()
     {
         Console.WriteLine($"{eskinasMexaric[6]} eded 200 AZN");
     }
+}
+
+void davam();
+{
+    Console.WriteLine("Emeliyyat icra olundu");
+    emeliyyatSechim();
 }
