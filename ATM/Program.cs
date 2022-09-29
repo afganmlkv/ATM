@@ -158,7 +158,7 @@ void mprint ()
     }
 }
 
-void davam();
+void davam()
 {
     Console.WriteLine("Emeliyyat icra olundu");
     emeliyyatSechim();
