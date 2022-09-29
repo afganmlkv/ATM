@@ -75,13 +75,11 @@ void medaxil()
 void carieskinaslar()
 {
     Console.WriteLine("ATM de olan eskinaslar");
-    Console.WriteLine($"{eskinaslar[6]} AZN eskinas {eskinassayi[6]} eded.");
-    Console.WriteLine($"{eskinaslar[5]} AZN eskinas {eskinassayi[5]} eded.");
-    Console.WriteLine($"{eskinaslar[4]} AZN eskinas {eskinassayi[4]} eded.");
-    Console.WriteLine($"{eskinaslar[3]} AZN eskinas {eskinassayi[3]} eded.");
-    Console.WriteLine($"{eskinaslar[2]} AZN eskinas {eskinassayi[2]} eded.");
-    Console.WriteLine($"{eskinaslar[1]} AZN eskinas {eskinassayi[1]} eded.");
-    Console.WriteLine($"{eskinaslar[0]} AZN eskinas {eskinassayi[0]} eded.");
+    for(int i= 0; i < eskinassayi.Length; i++)
+    {
+        Console.WriteLine($"{eskinaslar[i]} AZN eskinas {eskinassayi[i]} eded.");
+    }
+    
     Console.WriteLine($"ATM-de olan eskinas sayi: {eskinasSayiUmumi}");
     Console.WriteLine($"ATM-de olan eskinas deyeri: {eskinasDeyeri}");
     davam();
@@ -100,33 +98,49 @@ void mexaricSorgu()
 
 void mexaric()
 {
-    int mexaric200 = mebleg/ 200;
-    int qaliq200 = mebleg % 200;
-        
-    int mexaric100 = qaliq200 / 100;
-    int qaliq100 = qaliq200 % 100;
-    
-    int mexaric50 = qaliq100 / 50;
-    int qaliq50 = qaliq100 % 50;
+    int qaliqMebleg = mebleg;
+    for(int i=6; i >= 0; i--)
+    {
+        int say = qaliqMebleg / eskinaslar[i];
+        int qaliq = qaliqMebleg % eskinaslar[i];
+        if (say > 0)
+        {
+            Console.WriteLine($"{say} eded {eskinaslar[i]} AZN");
+            eskinassayi[i] -= say;
+            qaliqMebleg = qaliq;
+        }
+        else
+            continue;
+    }
 
-    int mexaric20 = qaliq50 / 20;
-    int qaliq20 = qaliq50 % 20;
+    //int mexaric200 = mebleg/ 200;
+    //int qaliq200 = mebleg % 200;
 
-    int mexaric10 = qaliq20 / 10;
-    int qaliq10 = qaliq20 % 10;
+    //int mexaric100 = qaliq200 / 100;
+    //int qaliq100 = qaliq200 % 100;
 
-    int mexaric5 = qaliq10 / 5;
-    
-    int mexaric1 = qaliq10 % 5;
+    //int mexaric50 = qaliq100 / 50;
+    //int qaliq50 = qaliq100 % 50;
 
-    Console.WriteLine($"Verilen eskinaslar:" +
-        $"\n{mexaric200} eded 200AZN " +
-        $"\n{mexaric100} eded 100AZN " +
-        $"\n{mexaric50} eded 50AZN " +
-        $"\n{mexaric20} eded 20 AZN " +
-        $"\n{mexaric10} eded 10 AZN " +
-        $"\n{mexaric5} eded 5 AZN " +
-        $"\n{mexaric1} eded 1 AZN");
+    //int mexaric20 = qaliq50 / 20;
+    //int qaliq20 = qaliq50 % 20;
+
+    //int mexaric10 = qaliq20 / 10;
+    //int qaliq10 = qaliq20 % 10;
+
+    //int mexaric5 = qaliq10 / 5;
+
+    //int mexaric1 = qaliq10 % 5;
+
+    //Console.WriteLine($"Verilen eskinaslar:" +
+    //    $"\n{mexaric200} eded 200AZN " +
+    //    $"\n{mexaric100} eded 100AZN " +
+    //    $"\n{mexaric50} eded 50AZN " +
+    //    $"\n{mexaric20} eded 20 AZN " +
+    //    $"\n{mexaric10} eded 10 AZN " +
+    //    $"\n{mexaric5} eded 5 AZN " +
+    //    $"\n{mexaric1} eded 1 AZN");
+    update();
     davam();
 }
 
