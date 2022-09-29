@@ -60,20 +60,11 @@ void update()
 
 void medaxil()
 {
-    Console.Write($"{eskinaslar[6]} AZN eskinaslari daxil edin: ");
-    eskinassayi[6] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[5]} AZN eskinaslari daxil edin: ");
-    eskinassayi[5] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[4]} AZN eskinaslari daxil edin: ");
-    eskinassayi[4] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[3]} AZN eskinaslari daxil edin: ");
-    eskinassayi[3] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[2]} AZN eskinaslari daxil edin: ");
-    eskinassayi[2] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[1]} AZN eskinaslari daxil edin: ");
-    eskinassayi[1] += int.Parse(Console.ReadLine());
-    Console.Write($"{eskinaslar[0]} AZN eskinaslari daxil edin: ");
-    eskinassayi[0] += int.Parse(Console.ReadLine());
+    for(int i = 0; i < eskinassayi.Length; i++)
+    {
+        Console.Write($"{eskinaslar[i]} AZN eskinaslari daxil edin: ");
+        eskinassayi[i] += int.Parse(Console.ReadLine());
+    }
     update();
     davam();
 }
