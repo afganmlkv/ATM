@@ -60,7 +60,7 @@ void mexaric()
 {
     int mexaric200 = mebleg / 200;
     int qaliq200 = mebleg % 200;
-    
+        
     int mexaric100 = qaliq200 / 100;
     int qaliq100 = qaliq200 % 100;
     
@@ -85,4 +85,13 @@ void mexaric()
         $"\n{mexaric10} eded 10 AZN " +
         $"\n{mexaric5} eded 5 AZN " +
         $"\n{mexaric1} eded 1 AZN");
+}
+
+void print ()
+{
+    Console.WriteLine("Verilen eskinaslar:");
+    if (mexaric200 > 0)
+    {
+        Console.WriteLine($"{mexaric200} eded 200 AZN");
+    }
 }
