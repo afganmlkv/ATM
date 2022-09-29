@@ -32,8 +32,6 @@ void emeliyyatSechim()
             Console.WriteLine("Duzgun sechim edin");
             emeliyyatSechim();
             break;
-
-
     }
 }
 
@@ -77,21 +75,11 @@ void medaxil()
     Console.Write($"{eskinaslar[0]} AZN eskinaslari daxil edin: ");
     eskinassayi[0] += int.Parse(Console.ReadLine());
     update();
+    davam();
 }
 
 
 
-void print()
-{
-    for(int i=0; i< eskinassayi.Length; i++)
-    {
-        Console.WriteLine(eskinassayi[i]);
-        
-    }
-    Console.WriteLine(eskinasDeyeri);
-    Console.WriteLine(eskinasSayiUmumi);
-
-}
 
 void carieskinaslar()
 {
@@ -105,6 +93,7 @@ void carieskinaslar()
     Console.WriteLine($"{eskinaslar[0]} AZN eskinas {eskinassayi[0]} eded.");
     Console.WriteLine($"ATM-de olan eskinas sayi: {eskinasSayiUmumi}");
     Console.WriteLine($"ATM-de olan eskinas deyeri: {eskinasDeyeri}");
+    davam();
 }
 
 void mexaricSorgu()
@@ -147,6 +136,7 @@ void mexaric()
         $"\n{mexaric10} eded 10 AZN " +
         $"\n{mexaric5} eded 5 AZN " +
         $"\n{mexaric1} eded 1 AZN");
+    davam();
 }
 
 void mprint ()
