@@ -1,39 +1,50 @@
 ﻿int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
 int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
-
-
-int AZN200 = 0;
-int AZN100 = 0;
-int AZN50 = 0;
-int AZN20 = 0;
-int AZN10 = 0;
-int AZN5 = 0;
-int AZN1 = 0;
+int[] eskinasMedaxil = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
 
+//eskinasDeyeriHesablama();
 //medaxil();
 int eskinasSayiUmumi = eskinassayi.Sum();
-int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1;
-mexaricSorgu();
-mexaric();
+int eskinasDeyeri = eskinasDeyeriHesablama();
+
+
+int eskinasDeyeriHesablama()
+{
+    int deyer=0;
+    for (int i=0; i<eskinassayi.Length; i++)
+    {
+        int araDeyer = 0;
+        araDeyer = eskinassayi[i] * eskinaslar[i];
+        deyer += araDeyer;
+    }
+    return deyer;
+}
+
+
+
+//mexaricSorgu();
+//mexaric();
 
 void medaxil()
 {
-    Console.Write("200 AZN eskinaslari daxil edin: ");
-    eskinassayi[6] = int.Parse(Console.ReadLine());
-    Console.Write("100 AZN eskinaslari daxil edin: ");
-    eskinassayi[5] = int.Parse(Console.ReadLine());
-    Console.Write("50 AZN eskinaslari daxil edin: ");
-    eskinassayi[4] = int.Parse(Console.ReadLine());
-    Console.Write("20 AZN eskinaslari daxil edin: ");
-    eskinassayi[3] = int.Parse(Console.ReadLine());
-    Console.Write("10 AZN eskinaslari daxil edin: ");
-    eskinassayi[2] = int.Parse(Console.ReadLine());
-    Console.Write("5 AZN eskinaslari daxil edin: ");
-    eskinassayi[1] = int.Parse(Console.ReadLine());
-    Console.Write("1 AZN eskinaslari daxil edin: ");
-    eskinassayi[0] = int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[6]} AZN eskinaslari daxil edin: ");
+    eskinassayi[6] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[5]} AZN eskinaslari daxil edin: ");
+    eskinassayi[5] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[4]} AZN eskinaslari daxil edin: ");
+    eskinassayi[4] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[3]} AZN eskinaslari daxil edin: ");
+    eskinassayi[3] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[2]} AZN eskinaslari daxil edin: ");
+    eskinassayi[2] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[1]} AZN eskinaslari daxil edin: ");
+    eskinassayi[1] += int.Parse(Console.ReadLine());
+    Console.Write($"{eskinaslar[0]} AZN eskinaslari daxil edin: ");
+    eskinassayi[0] += int.Parse(Console.ReadLine());
 }
+
 
 void carieskinaslar()
 {
@@ -62,7 +73,7 @@ void mexaricSorgu()
 
 void mexaric()
 {
-    int mexaric200 = mebleg / 200;
+    int mexaric200 = mebleg/ 200;
     int qaliq200 = mebleg % 200;
         
     int mexaric100 = qaliq200 / 100;
@@ -94,8 +105,8 @@ void mexaric()
 void print ()
 {
     Console.WriteLine("Verilen eskinaslar:");
-    if (mexaric200 > 0)
+    if (eskinasMexaric[6] > 0)
     {
-        Console.WriteLine($"{mexaric200} eded 200 AZN");
+        Console.WriteLine($"{eskinasMexaric[6]} eded 200 AZN");
     }
 }
