@@ -1,4 +1,8 @@
-﻿int AZN200 = 0;
+﻿int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
+int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+
+
+int AZN200 = 0;
 int AZN100 = 0;
 int AZN50 = 0;
 int AZN20 = 0;
@@ -8,7 +12,7 @@ int AZN1 = 0;
 int mebleg = 0;
 
 //medaxil();
-int eskinasSayi = AZN200 + AZN100 + AZN50 + AZN20 + AZN10 + AZN5 + AZN1;
+int eskinasSayiUmumi = eskinassayi.Sum();
 int eskinasDeyeri = AZN200 * 200 + AZN100 * 100 + AZN50 * 50 + AZN20 * 20 + AZN10 * 10 + AZN5 * 5 + AZN1 * 1;
 mexaricSorgu();
 mexaric();
@@ -16,32 +20,32 @@ mexaric();
 void medaxil()
 {
     Console.Write("200 AZN eskinaslari daxil edin: ");
-    AZN200 = int.Parse(Console.ReadLine());
+    eskinassayi[6] = int.Parse(Console.ReadLine());
     Console.Write("100 AZN eskinaslari daxil edin: ");
-    AZN100 = int.Parse(Console.ReadLine());
+    eskinassayi[5] = int.Parse(Console.ReadLine());
     Console.Write("50 AZN eskinaslari daxil edin: ");
-    AZN50 = int.Parse(Console.ReadLine());
+    eskinassayi[4] = int.Parse(Console.ReadLine());
     Console.Write("20 AZN eskinaslari daxil edin: ");
-    AZN20 = int.Parse(Console.ReadLine());
+    eskinassayi[3] = int.Parse(Console.ReadLine());
     Console.Write("10 AZN eskinaslari daxil edin: ");
-    AZN10 = int.Parse(Console.ReadLine());
+    eskinassayi[2] = int.Parse(Console.ReadLine());
     Console.Write("5 AZN eskinaslari daxil edin: ");
-    AZN5 = int.Parse(Console.ReadLine());
+    eskinassayi[1] = int.Parse(Console.ReadLine());
     Console.Write("1 AZN eskinaslari daxil edin: ");
-    AZN1 = int.Parse(Console.ReadLine());
+    eskinassayi[0] = int.Parse(Console.ReadLine());
 }
 
-void eskinaslar()
+void carieskinaslar()
 {
     Console.WriteLine("ATM de olan eskinaslar");
-    Console.WriteLine($"200 AZN eskinas {AZN200} eded.");
-    Console.WriteLine($"100 AZN eskinas {AZN100} eded.");
-    Console.WriteLine($"50 AZN eskinas {AZN50} eded.");
-    Console.WriteLine($"20 AZN eskinas {AZN20} eded.");
-    Console.WriteLine($"10 AZN eskinas {AZN10} eded.");
-    Console.WriteLine($"5 AZN eskinas {AZN5} eded.");
-    Console.WriteLine($"1 AZN eskinas {AZN1} eded.");
-    Console.WriteLine($"ATM-de olan eskinas sayi: {eskinasSayi}");
+    Console.WriteLine($"{eskinaslar[6]} AZN eskinas {eskinassayi[6]} eded.");
+    Console.WriteLine($"{eskinaslar[5]} AZN eskinas {eskinassayi[5]} eded.");
+    Console.WriteLine($"{eskinaslar[4]} AZN eskinas {eskinassayi[4]} eded.");
+    Console.WriteLine($"{eskinaslar[3]} AZN eskinas {eskinassayi[3]} eded.");
+    Console.WriteLine($"{eskinaslar[2]} AZN eskinas {eskinassayi[2]} eded.");
+    Console.WriteLine($"{eskinaslar[1]} AZN eskinas {eskinassayi[1]} eded.");
+    Console.WriteLine($"{eskinaslar[0]} AZN eskinas {eskinassayi[0]} eded.");
+    Console.WriteLine($"ATM-de olan eskinas sayi: {eskinasSayiUmumi}");
     Console.WriteLine($"ATM-de olan eskinas deyeri: {eskinasDeyeri}");
 }
 
