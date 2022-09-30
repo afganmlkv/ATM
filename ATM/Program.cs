@@ -94,6 +94,11 @@ void mexaricSorgu()
         Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
         mebleg = int.Parse(Console.ReadLine());
     }
+    while (mebleg > eskinasDeyeri)
+    {
+        Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
+        mebleg = int.Parse(Console.ReadLine());
+    }
 }
 
 void mexaric()
@@ -103,43 +108,25 @@ void mexaric()
     {
         int say = qaliqMebleg / eskinaslar[i];
         int qaliq = qaliqMebleg % eskinaslar[i];
-        if (say > 0)
+        if (say > 0 && say <= eskinassayi[i])
         {
             Console.WriteLine($"{say} eded {eskinaslar[i]} AZN");
             eskinassayi[i] -= say;
             qaliqMebleg = qaliq;
         }
+        else if (say>0 && eskinassayi[i]>0 && say > eskinassayi[i])
+        {
+            Console.WriteLine($"{eskinassayi[i]} eded {eskinaslar[i]} AZN");
+            eskinassayi[i] = 0;
+            qaliqMebleg = qaliq + (say - eskinassayi[i]) * eskinaslar[i];
+        }
         else
+        {
+            Console.WriteLine("Istediyiniz meblegi vere bilecek eskinaslar bankomatda yoxdur. Bashqa mebleg secin");
+        }
             continue;
     }
 
-    //int mexaric200 = mebleg/ 200;
-    //int qaliq200 = mebleg % 200;
-
-    //int mexaric100 = qaliq200 / 100;
-    //int qaliq100 = qaliq200 % 100;
-
-    //int mexaric50 = qaliq100 / 50;
-    //int qaliq50 = qaliq100 % 50;
-
-    //int mexaric20 = qaliq50 / 20;
-    //int qaliq20 = qaliq50 % 20;
-
-    //int mexaric10 = qaliq20 / 10;
-    //int qaliq10 = qaliq20 % 10;
-
-    //int mexaric5 = qaliq10 / 5;
-
-    //int mexaric1 = qaliq10 % 5;
-
-    //Console.WriteLine($"Verilen eskinaslar:" +
-    //    $"\n{mexaric200} eded 200AZN " +
-    //    $"\n{mexaric100} eded 100AZN " +
-    //    $"\n{mexaric50} eded 50AZN " +
-    //    $"\n{mexaric20} eded 20 AZN " +
-    //    $"\n{mexaric10} eded 10 AZN " +
-    //    $"\n{mexaric5} eded 5 AZN " +
-    //    $"\n{mexaric1} eded 1 AZN");
     update();
     davam();
 }
@@ -155,6 +142,5 @@ void mprint ()
 
 void davam()
 {
-    Console.WriteLine("Emeliyyat icra olundu");
-    emeliyyatSechim();
+        emeliyyatSechim();
 }
