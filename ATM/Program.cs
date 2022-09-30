@@ -103,22 +103,31 @@ void carieskinaslar()
 
 void mexaricSorgu()
 {
-    Console.Write("Elde etmek istediyiniz meblegi daxil edin: ");
-    mebleg = int.Parse(Console.ReadLine());
-    while (mebleg > 500 || mebleg > eskinasDeyeri)
+    try
     {
-        if (mebleg > eskinasDeyeri && mebleg <=500)
+        Console.Write("Elde etmek istediyiniz meblegi daxil edin: ");
+        mebleg = int.Parse(Console.ReadLine());
+        while (mebleg > 500 || mebleg > eskinasDeyeri)
         {
-            Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
-            mebleg = int.Parse(Console.ReadLine());
+            if (mebleg > eskinasDeyeri && mebleg <= 500)
+            {
+                Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
+                mebleg = int.Parse(Console.ReadLine());
+            }
+            else
+            {
+                Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
+                mebleg = int.Parse(Console.ReadLine());
+            }
+
         }
-        else
-        {
-            Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
-            mebleg = int.Parse(Console.ReadLine());
-        }
-        
     }
+    catch
+    {
+        Console.WriteLine("Mebleg yanlish daxil edilmishdir");
+        mexaricSorgu();
+    }
+    
 }
 
 void mexaric()
