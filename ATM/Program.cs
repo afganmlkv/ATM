@@ -1,7 +1,7 @@
 ﻿Console.WriteLine($"EfqanBank ASC-ye xosh gelmisiniz \nXahish edirik bankomatla emtmek istediyiniz emliyyati sechin");
 
 int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
-int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+int[] eskinassayi = new int[7] { 2, 3, 0, 0, 0, 0, 0 };
 int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
 int eskinasDeyeri = 0;
@@ -84,16 +84,26 @@ void mexaricSorgu()
 {
     Console.Write("Elde etmek istediyiniz meblegi daxil edin: ");
     mebleg = int.Parse(Console.ReadLine());
-    while (mebleg > 500)
+    while (mebleg > 500 || mebleg > eskinasDeyeri)
     {
-        Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
-        mebleg = int.Parse(Console.ReadLine());
+        if (mebleg > eskinasDeyeri && mebleg <=500)
+        {
+            Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
+            mebleg = int.Parse(Console.ReadLine());
+        }
+        else
+        {
+            Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
+            mebleg = int.Parse(Console.ReadLine());
+        }
+        //Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
+        //mebleg = int.Parse(Console.ReadLine());
     }
-    while (mebleg > eskinasDeyeri)
-    {
-        Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
-        mebleg = int.Parse(Console.ReadLine());
-    }
+    //while (mebleg > eskinasDeyeri)
+    //{
+    //    Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
+    //    mebleg = int.Parse(Console.ReadLine());
+    //}
 }
 
 void mexaric()
@@ -135,7 +145,9 @@ void mexaric()
     }
     else if (qaliqMebleg > 0)
     {
-        Console.WriteLine($"Istediyiniz meblegi bankomatda olan eskinaslarla vermek mumkun deyil.");
+        Console.WriteLine($"Istediyiniz meblegi bankomatda olan eskinaslarla vermek mumkun deyil. \nXahish edirik bashqa mebleg sechin.");
+        mexaricSorgu();
+        mexaric();
     }
     update();
     davam();
