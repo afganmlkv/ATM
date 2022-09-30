@@ -6,6 +6,7 @@ int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
 int eskinasDeyeri = 0;
 int eskinasSayiUmumi = 0;
+int sira = 0;
 
 update();
 emeliyyatSechim();
@@ -14,23 +15,31 @@ emeliyyatSechim();
 void emeliyyatSechim()
 {
     Console.WriteLine("Medaxil etmek uchun 'd' --- mexaric etmek uchun 'x' --- ATM-deki eskinaslar barede melumat almaq ucun 'm'");
-    char sechim = char.Parse(Console.ReadLine());
-    switch (sechim)
+    try
     {
-        case 'd':
-            medaxil();
-            break;
-        case 'x':
-            mexaricSorgu();
-            mexaric();
-            break;
-        case 'm':
-            carieskinaslar();
-            break;
+        char sechim = char.Parse(Console.ReadLine());
+        switch (sechim)
+        {
+            case 'd':
+                medaxil();
+                break;
+            case 'x':
+                mexaricSorgu();
+                mexaric();
+                break;
+            case 'm':
+                carieskinaslar();
+                break;
             default:
-            Console.WriteLine("Duzgun sechim edin");
-            emeliyyatSechim();
-            break;
+                Console.WriteLine("Duzgun sechim edin");
+                emeliyyatSechim();
+                break;
+        }
+    }
+    catch (FormatException fEx)
+    {
+        Console.WriteLine("Duzgun sechim edin");
+        emeliyyatSechim();
     }
 }
 
@@ -57,12 +66,24 @@ void update()
 
 void medaxil()
 {
-    for(int i = 0; i < eskinassayi.Length; i++)
+    
+    try
     {
-        Console.Write($"{eskinaslar[i]} AZN eskinaslari daxil edin: ");
-        eskinassayi[i] += int.Parse(Console.ReadLine());
+        for (int i = sira; i < eskinassayi.Length; i++)
+        {
+            Console.Write($"{eskinaslar[i]} AZN eskinaslari daxil edin: ");
+            eskinassayi[i] += int.Parse(Console.ReadLine());
+            sira++;
+        }
     }
+    catch
+    {
+        Console.WriteLine("Duzgun say daxil edin");
+        medaxil();
+    }
+        
     update();
+    sira = 0;
     davam();
 }
 
@@ -96,14 +117,8 @@ void mexaricSorgu()
             Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
             mebleg = int.Parse(Console.ReadLine());
         }
-        //Console.Write("Mebleg 500 AZN den cox ola bilmez: ");
-        //mebleg = int.Parse(Console.ReadLine());
+        
     }
-    //while (mebleg > eskinasDeyeri)
-    //{
-    //    Console.Write($"Istediyiniz mebleg hal-hazirda bankomatda yoxdur. \nXahish edirik bashqa mebleg sechin: ");
-    //    mebleg = int.Parse(Console.ReadLine());
-    //}
 }
 
 void mexaric()
