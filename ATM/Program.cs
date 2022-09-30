@@ -1,14 +1,14 @@
 ﻿Console.WriteLine($"EfqanBank ASC-ye xosh gelmisiniz \nXahish edirik bankomatla emtmek istediyiniz emliyyati sechin");
 
 int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
-int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+int[] eskinassayi = new int[7] { 1, 1, 1, 1, 1, 3, 0 };
 int[] eskinasMedaxil = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
 int eskinasDeyeri = 0;
 int eskinasSayiUmumi = 0;
 
-
+update();
 emeliyyatSechim();
 
 
@@ -110,23 +110,38 @@ void mexaric()
         int qaliq = qaliqMebleg % eskinaslar[i];
         if (say > 0 && say <= eskinassayi[i])
         {
-            Console.WriteLine($"{say} eded {eskinaslar[i]} AZN");
-            eskinassayi[i] -= say;
+            eskinasMexaric[i]=say;
             qaliqMebleg = qaliq;
         }
         else if (say>0 && eskinassayi[i]>0 && say > eskinassayi[i])
         {
-            Console.WriteLine($"{eskinassayi[i]} eded {eskinaslar[i]} AZN");
-            eskinassayi[i] = 0;
+            eskinasMexaric[i] = eskinassayi[i];
             qaliqMebleg = qaliq + (say - eskinassayi[i]) * eskinaslar[i];
         }
-        else
-        {
-            Console.WriteLine("Istediyiniz meblegi vere bilecek eskinaslar bankomatda yoxdur. Bashqa mebleg secin");
-        }
+        
             continue;
     }
-
+    if (qaliqMebleg == 0)
+    {
+        for (int i=0; i < eskinassayi.Length; i++)
+        {
+            if (eskinasMexaric[i] == 0)
+            {
+                continue;
+            }
+            else
+            {
+                eskinassayi[i] -= eskinasMexaric[i];
+                Console.WriteLine($"{eskinasMexaric[i]} eded {eskinaslar[i]} AZN");
+                eskinasMexaric[i] = 0;
+            }
+        }
+        Console.WriteLine("Emeliyyat icra olundu");
+    }
+    else if (qaliqMebleg > 0)
+    {
+        Console.WriteLine($"Istediyiniz meblegi bankomatda olan eskinaslarla vermek mumkun deyil.");
+    }
     update();
     davam();
 }
