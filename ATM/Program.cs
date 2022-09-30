@@ -1,8 +1,7 @@
 ﻿Console.WriteLine($"EfqanBank ASC-ye xosh gelmisiniz \nXahish edirik bankomatla emtmek istediyiniz emliyyati sechin");
 
 int[] eskinaslar = new int[7] { 1, 5, 10, 20, 50, 100, 200 };
-int[] eskinassayi = new int[7] { 1, 1, 1, 1, 1, 3, 0 };
-int[] eskinasMedaxil = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+int[] eskinassayi = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int[] eskinasMexaric = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
 int mebleg = 0;
 int eskinasDeyeri = 0;
@@ -55,8 +54,6 @@ void update()
     eskinasSayiUmumi = eskinassayi.Sum();
 }
 
-//mexaricSorgu();
-//mexaric();
 
 void medaxil()
 {
@@ -68,8 +65,6 @@ void medaxil()
     update();
     davam();
 }
-
-
 
 
 void carieskinaslar()
@@ -146,14 +141,6 @@ void mexaric()
     davam();
 }
 
-void mprint ()
-{
-    Console.WriteLine("Verilen eskinaslar:");
-    if (eskinasMexaric[6] > 0)
-    {
-        Console.WriteLine($"{eskinasMexaric[6]} eded 200 AZN");
-    }
-}
 
 void davam()
 {
